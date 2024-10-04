@@ -1,7 +1,9 @@
-const myLibrary = []
+const myLibrary = [
+    {title: "Hobbit", author: "Tolkien", pages: "295"}
+]
 const wrapper = document.querySelector(".wrapper");
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -22,8 +24,14 @@ function addBookToLibrary() {
 
 function libraryDisplay() {
     myLibrary.forEach((book) => {
-        let div = document.createElement('div');
-        let title = document.createElement('p');
+        let div = document.createElement('div');        
+        for (const key in book) {
+            let field = document.createElement('p');
+            field.textContent = book[key];
+            div.appendChild(field);
+        }
+        wrapper.appendChild(div);
+        /*let title = document.createElement('p');
         let author = document.createElement('p');
         let pages = document.createElement('p');
         title.textContent = book.title;
@@ -32,7 +40,7 @@ function libraryDisplay() {
         wrapper.appendChild(div);
         div.appendChild(title);
         div.appendChild(author);
-        div.appendChild(pages);
+        div.appendChild(pages);*/
     })
 }
 
