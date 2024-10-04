@@ -13,8 +13,13 @@ function addBookToLibrary() {
     let title = prompt("Title:");
     let author = prompt('Author:');
     let pages = prompt('Page count:');
-    let book = new Book(title, author, pages);
-    myLibrary.push(book);
+    if (title === (null || "") || author === (null || "") || pages === (null || "")) {
+        alert("Please enter valid data");
+        addBookToLibrary()
+    } else {
+        let book = new Book(title, author, pages);
+        myLibrary.push(book);
+    }
 }
 
 function libraryDisplay() {
