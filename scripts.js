@@ -1,12 +1,10 @@
 const myLibrary = []
+const wrapper = document.querySelector(".wrapper");
 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.info = function() {
-        return `${this.title} by ${this.author}, ${this.pages} pages`
-    }
 }
 
 function addBookToLibrary() {
@@ -23,7 +21,19 @@ function addBookToLibrary() {
 }
 
 function libraryDisplay() {
-    
+    myLibrary.forEach((book) => {
+        let div = document.createElement('div');
+        let title = document.createElement('p');
+        let author = document.createElement('p');
+        let pages = document.createElement('p');
+        title.textContent = book.title;
+        author.textContent = book.author;
+        pages.textContent = book.pages;
+        wrapper.appendChild(div);
+        div.appendChild(title);
+        div.appendChild(author);
+        div.appendChild(pages);
+    })
 }
 
 const HOBBIT = new Book('The Hobbit', 'J.R.R. Tolkien', 295)
