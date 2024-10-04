@@ -31,16 +31,6 @@ function libraryDisplay() {
             div.appendChild(field);
         }
         wrapper.appendChild(div);
-        /*let title = document.createElement('p');
-        let author = document.createElement('p');
-        let pages = document.createElement('p');
-        title.textContent = book.title;
-        author.textContent = book.author;
-        pages.textContent = book.pages;
-        wrapper.appendChild(div);
-        div.appendChild(title);
-        div.appendChild(author);
-        div.appendChild(pages);*/
     })
 }
 
