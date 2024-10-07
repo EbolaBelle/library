@@ -19,10 +19,14 @@ function addBookToLibrary() {
     } else {
         let book = new Book(title, author, pages);
         myLibrary.push(book);
+        libraryDisplay();
     }
 }
 
 function libraryDisplay() {
+    while (wrapper.firstChild) {
+        wrapper.removeChild(wrapper.lastChild);
+      }
     myLibrary.forEach((book) => {
         let div = document.createElement('div');        
         for (const key in book) {
