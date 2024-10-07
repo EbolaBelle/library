@@ -61,6 +61,10 @@ function libraryDisplay() {
             field.textContent = book[key];
             div.appendChild(field);
         }
+        let btn = document.createElement('button');
+        btn.type = "button";
+        btn.textContent = "Read/Not Read";
+        div.appendChild(btn);
         wrapper.appendChild(div);
     })
 }
