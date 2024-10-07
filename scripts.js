@@ -5,8 +5,17 @@ const myLibrary = [
 ]
 const wrapper = document.querySelector(".wrapper");
 const NEWBOOK = document.querySelector('.new-book');
+const dialog = document.querySelector('.new-dialog');
+const SUBMIT = document.querySelector('.submit');
+const CANCEL = document.querySelector('.cancel');
 
-NEWBOOK.addEventListener('click', addBookToLibrary)
+NEWBOOK.addEventListener('click', () => {
+    dialog.showModal();
+})
+
+CANCEL.addEventListener('click', () => {
+    dialog.close;
+})
 
 function Book(title, author, pages) {
     this.title = title;
