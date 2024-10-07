@@ -4,6 +4,9 @@ const myLibrary = [
     {title: "Illuminatus!", author: "Robert Anton Wilson", pages: "700"}
 ]
 const wrapper = document.querySelector(".wrapper");
+const NEWBOOK = document.querySelector('.new-book');
+
+NEWBOOK.addEventListener('click', addBookToLibrary)
 
 function Book(title, author, pages) {
     this.title = title;
