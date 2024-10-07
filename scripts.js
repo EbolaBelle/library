@@ -38,4 +38,6 @@ function libraryDisplay() {
     })
 }
 
+libraryDisplay()
+
 const HOBBIT = new Book('The Hobbit', 'J.R.R. Tolkien', 295)
