@@ -14,8 +14,21 @@ NEWBOOK.addEventListener('click', () => {
 })
 
 CANCEL.addEventListener('click', () => {
-    dialog.close;
+    dialog.close();
 })
+
+SUBMIT.addEventListener('click', submitBook)
+
+function submitBook() {
+    let book = new Book(document.getElementById('title').value, document.getElementById('author').value, document.getElementById('pages').value);
+    if (book.title === (null || "") || book.author === (null || "") || book.pages === (null || "")) {
+        alert("Please enter valid data");
+    } else {
+        myLibrary.push(book);
+        libraryDisplay();
+        dialog.close();
+    }
+}
 
 function Book(title, author, pages) {
     this.title = title;
