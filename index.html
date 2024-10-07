@@ -16,13 +16,19 @@
             height: 10vh;
             align-items: center;
         }
-        .wrapper {
+        .content {
             background-color: #45171d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .wrapper {            
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
-            justify-content: space-between;
-            height: 90vh;
+            justify-content: center;
+            height: 85vh;
+            width: 100vw;
         }
         .wrapper > div {
             background-color: #ff847c;
@@ -31,6 +37,15 @@
             height: 9rem;
             width: 15rem;
             padding: 10px;
+            justify-self: center;
+            align-self: center;
+        }
+        .new-book {
+            background-color: #fecea8;
+            border-radius: 10px;
+            font-size: x-large;
+            height: 5vh;
+            width: fit-content;
         }
     </style>
 </head>
@@ -38,8 +53,11 @@
     <div class="header">
         <h1>Lou's Library</h1>
     </div>
-    <div class="wrapper">
+    <div class="content">
+        <button class="new-book">New Book</button>
+        <div class="wrapper">
 
+        </div>
     </div>
     <script src="scripts.js"></script>
 </html>
