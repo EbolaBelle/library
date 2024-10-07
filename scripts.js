@@ -54,7 +54,8 @@ function libraryDisplay() {
     while (wrapper.firstChild) {
         wrapper.removeChild(wrapper.lastChild);
       }
-    myLibrary.forEach((book) => {
+      let index = 0;
+    myLibrary.forEach((book) => {        
         let div = document.createElement('div');        
         for (const key in book) {
             let field = document.createElement('p');
@@ -63,7 +64,9 @@ function libraryDisplay() {
         }
         let btn = document.createElement('button');
         btn.type = "button";
-        btn.textContent = "Read/Not Read";
+        btn.textContent = "Remove";
+        btn.setAttribute('id', index);
+        index++;
         div.appendChild(btn);
         wrapper.appendChild(div);
     })
