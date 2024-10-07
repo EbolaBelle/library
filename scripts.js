@@ -1,5 +1,7 @@
 const myLibrary = [
-    {title: "Hobbit", author: "Tolkien", pages: "295"}
+    {title: "The Hobbit", author: "J.R.R. Tolkien", pages: "295"},
+    {title: "The Fellowship of the Ring", author: "J.R.R. Tolkien", pages: "300"},
+    {title: "Illuminatus!", author: "Robert Anton Wilson", pages: "700"}
 ]
 const wrapper = document.querySelector(".wrapper");
 

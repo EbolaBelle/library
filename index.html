@@ -18,14 +18,18 @@
         }
         .wrapper {
             background-color: #45171d;
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            justify-content: space-between;
             height: 90vh;
         }
         .wrapper > div {
+            background-color: #ff847c;
+            font-size: xx-large;
             color: white;
-            height: fit-content;
-            border: 1px solid #ff847c;
+            height: 9rem;
+            width: 15rem;
             padding: 10px;
         }
     </style>
