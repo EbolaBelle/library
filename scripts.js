@@ -8,6 +8,12 @@ const NEWBOOK = document.querySelector('.new-book');
 const dialog = document.querySelector('.new-dialog');
 const SUBMIT = document.querySelector('.submit');
 const CANCEL = document.querySelector('.cancel');
+libraryDisplay()
+const removeButtons = document.querySelectorAll('.remove-btn');
+
+removeButtons.forEach(function(button) {
+    button.addEventListener('click', removeBook)
+})
 
 NEWBOOK.addEventListener('click', () => {
     dialog.showModal();
@@ -18,6 +24,11 @@ CANCEL.addEventListener('click', () => {
 })
 
 SUBMIT.addEventListener('click', submitBook)
+
+function removeBook() {
+    myLibrary.splice(this.id, 1);
+    console.log("clicked");
+}
 
 function submitBook() {
     let book = new Book(document.getElementById('title').value, document.getElementById('author').value, document.getElementById('pages').value);
@@ -36,7 +47,31 @@ function Book(title, author, pages) {
     this.pages = pages;
 }
 
-function addBookToLibrary() {
+function libraryDisplay() {
+    while (wrapper.firstChild) {
+        wrapper.removeChild(wrapper.lastChild);
+      }
+    let index = 0;
+    myLibrary.forEach((book) => {        
+        let div = document.createElement('div');
+        div.dataset.index = myLibrary.indexOf(book);
+        for (const key in book) {
+            let field = document.createElement('p');
+            field.textContent = book[key];
+            div.appendChild(field);
+        }
+        let btn = document.createElement('button');
+        btn.type = "button";
+        btn.textContent = "Remove";
+        btn.setAttribute('class', "remove-btn");
+        btn.setAttribute('id', index);
+        index++;
+        div.appendChild(btn);
+        wrapper.appendChild(div);
+    })
+}
+
+/*function addBookToLibrary() {
     let title = prompt("Title:");
     let author = prompt('Author:');
     let pages = prompt('Page count:');
@@ -48,30 +83,4 @@ function addBookToLibrary() {
         myLibrary.push(book);
         libraryDisplay();
     }
-}
-
-function libraryDisplay() {
-    while (wrapper.firstChild) {
-        wrapper.removeChild(wrapper.lastChild);
-      }
-      let index = 0;
-    myLibrary.forEach((book) => {        
-        let div = document.createElement('div');        
-        for (const key in book) {
-            let field = document.createElement('p');
-            field.textContent = book[key];
-            div.appendChild(field);
-        }
-        let btn = document.createElement('button');
-        btn.type = "button";
-        btn.textContent = "Remove";
-        btn.setAttribute('id', index);
-        index++;
-        div.appendChild(btn);
-        wrapper.appendChild(div);
-    })
-}
-
-libraryDisplay()
-
-const HOBBIT = new Book('The Hobbit', 'J.R.R. Tolkien', 295)
+}*/
