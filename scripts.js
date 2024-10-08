@@ -9,13 +9,10 @@ const dialog = document.querySelector('.new-dialog');
 const SUBMIT = document.querySelector('.submit');
 const CANCEL = document.querySelector('.cancel');
 
-libraryDisplay()
-
 let removeBtn = document.querySelectorAll('.remove-btn');
 
-removeBtn.forEach( (button)  => {
-    button.addEventListener('click', removeButton)
-})
+libraryDisplay()
+removeHandler();
 
 NEWBOOK.addEventListener('click', () => {
     dialog.showModal();
@@ -27,9 +24,16 @@ CANCEL.addEventListener('click', () => {
 
 SUBMIT.addEventListener('click', submitBook)
 
+function removeHandler(){
+    removeBtn.forEach((button)  => {
+        button.addEventListener('click', removeButton)
+    })}
+
 function removeButton() {
     this.parentElement.remove();
     myLibrary.splice(this.parentElement.dataset.index, 1);
+    removeBtn = document.querySelectorAll('.remove-btn');
+    console.log("clikt");
 }
 
 function submitBook() {
@@ -69,18 +73,6 @@ function libraryDisplay() {
         div.appendChild(btn);
         wrapper.appendChild(div);
     })
+    removeBtn = document.querySelectorAll('.remove-btn');
+    removeHandler();
 }
-
-/*function addBookToLibrary() {
-    let title = prompt("Title:");
-    let author = prompt('Author:');
-    let pages = prompt('Page count:');
-    if (title === (null || "") || author === (null || "") || pages === (null || "")) {
-        alert("Please enter valid data");
-        addBookToLibrary()
-    } else {
-        let book = new Book(title, author, pages);
-        myLibrary.push(book);
-        libraryDisplay();
-    }
-}*/
