@@ -8,11 +8,13 @@ const NEWBOOK = document.querySelector('.new-book');
 const dialog = document.querySelector('.new-dialog');
 const SUBMIT = document.querySelector('.submit');
 const CANCEL = document.querySelector('.cancel');
-libraryDisplay()
-const removeButtons = document.querySelectorAll('.remove-btn');
 
-removeButtons.forEach(function(button) {
-    button.addEventListener('click', removeBook)
+libraryDisplay()
+
+let removeBtn = document.querySelectorAll('.remove-btn');
+
+removeBtn.forEach( (button)  => {
+    button.addEventListener('click', removeButton)
 })
 
 NEWBOOK.addEventListener('click', () => {
@@ -25,9 +27,9 @@ CANCEL.addEventListener('click', () => {
 
 SUBMIT.addEventListener('click', submitBook)
 
-function removeBook() {
-    myLibrary.splice(this.id, 1);
-    console.log("clicked");
+function removeButton() {
+    this.parentElement.remove();
+    myLibrary.splice(this.parentElement.dataset.index, 1);
 }
 
 function submitBook() {
@@ -64,8 +66,6 @@ function libraryDisplay() {
         btn.type = "button";
         btn.textContent = "Remove";
         btn.setAttribute('class', "remove-btn");
-        btn.setAttribute('id', index);
-        index++;
         div.appendChild(btn);
         wrapper.appendChild(div);
     })
