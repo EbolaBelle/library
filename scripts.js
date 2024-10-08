@@ -1,7 +1,7 @@
 const myLibrary = [
-    {title: "The Hobbit", author: "J.R.R. Tolkien", pages: "295"},
-    {title: "The Fellowship of the Ring", author: "J.R.R. Tolkien", pages: "300"},
-    {title: "Illuminatus!", author: "Robert Anton Wilson", pages: "700"}
+    {title: "The Hobbit", author: "J.R.R. Tolkien", pages: "295", read: "Read"},
+    {title: "The BFG", author: "Roald Dahl", pages: "300",read: "Read"},
+    {title: "Illuminatus!", author: "Robert Wilson", pages: "700", read: "Read"}
 ]
 const wrapper = document.querySelector(".wrapper");
 const NEWBOOK = document.querySelector('.new-book');
@@ -37,7 +37,7 @@ function removeButton() {
 }
 
 function submitBook() {
-    let book = new Book(document.getElementById('title').value, document.getElementById('author').value, document.getElementById('pages').value);
+    let book = new Book(document.getElementById('title').value, document.getElementById('author').value, document.getElementById('pages').value, document.querySelector('input[name="read"]:checked').value);
     if (book.title === (null || "") || book.author === (null || "") || book.pages === (null || "")) {
         alert("Please enter valid data");
     } else {
@@ -47,10 +47,11 @@ function submitBook() {
     }
 }
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
 }
 
 function libraryDisplay() {
