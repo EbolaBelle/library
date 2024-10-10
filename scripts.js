@@ -1,21 +1,10 @@
-const myLibrary = [
-    //{title: "The Hobbit", author: "J.R.R. Tolkien", pages: "295", read: "Read"},
-    //{title: "The BFG", author: "Roald Dahl", pages: "300",read: "Read"},
-    //{title: "Illuminatus!", author: "Robert Wilson", pages: "700", read: "Read"}
-]
+const myLibrary = []
 const wrapper = document.querySelector(".wrapper");
 const NEWBOOK = document.querySelector('.new-book');
 const dialog = document.querySelector('.new-dialog');
 const SUBMIT = document.querySelector('.submit');
 const CANCEL = document.querySelector('.cancel');
 const FORM = document.querySelector('#library');
-
-//let removeBtn = document.querySelectorAll('.remove-btn');
-//let toggleBtn = document.querySelectorAll('.read-toggle');
-
-//libraryDisplay();
-//removeHandler();
-//toggleHandler();
 
 NEWBOOK.addEventListener('click', () => {
     dialog.showModal();
@@ -74,10 +63,20 @@ function Book(title, author, pages, read) {
     }
 }
 
-function libraryDisplay() {
+function clearDisplay() {
     while (wrapper.firstChild) {
         wrapper.removeChild(wrapper.lastChild);
       }
+}
+
+function buttonHandler() {
+    let removeBtn = document.querySelectorAll('.remove-btn');
+    removeHandler();
+    let toggleBtn = document.querySelectorAll('.read-toggle');
+    toggleHandler();
+}
+
+function printData() {
     let index = 0;
     myLibrary.forEach((book) => {        
         let div = document.createElement('div');
@@ -92,20 +91,26 @@ function libraryDisplay() {
             div.appendChild(field);
             i++;
         }
-        let btn = document.createElement('button');
+        createButtons(div);
+    })
+}
+
+function createButtons(parent) {
+    let btn = document.createElement('button');
         btn.type = "button";
         btn.textContent = "Remove";
         btn.setAttribute('class', "remove-btn");
-        div.appendChild(btn);
+        parent.appendChild(btn);
         let READ = document.createElement('button')
         READ.type = "button";
         READ.textContent = "Read/Not Read";
         READ.setAttribute('class', 'read-toggle');
-        div.appendChild(READ);
-        wrapper.appendChild(div);
-    })
-    removeBtn = document.querySelectorAll('.remove-btn');
-    removeHandler();
-    toggleBtn = document.querySelectorAll('.read-toggle');
-    toggleHandler();
+        parent.appendChild(READ);
+        wrapper.appendChild(parent);
+}
+
+function libraryDisplay() {
+    clearDisplay();
+    printData();
+    buttonHandler();
 }
