@@ -10,9 +10,11 @@ const SUBMIT = document.querySelector('.submit');
 const CANCEL = document.querySelector('.cancel');
 
 let removeBtn = document.querySelectorAll('.remove-btn');
+let toggleBtn = document.querySelectorAll('.read-toggle');
 
-libraryDisplay()
+libraryDisplay();
 removeHandler();
+toggleHandler();
 
 NEWBOOK.addEventListener('click', () => {
     dialog.showModal();
@@ -29,11 +31,21 @@ function removeHandler(){
         button.addEventListener('click', removeButton)
     })}
 
+function toggleHandler() {
+    toggleBtn.forEach((button)  => {
+        button.addEventListener('click', toggleButton)
+    })
+}
+
 function removeButton() {
     this.parentElement.remove();
     myLibrary.splice(this.parentElement.dataset.index, 1);
     removeBtn = document.querySelectorAll('.remove-btn');
     console.log("clikt");
+}
+
+function toggleButton() {
+    myLibrary[this.parentElement.dataset.index].readToggle();
 }
 
 function submitBook() {
@@ -83,8 +95,15 @@ function libraryDisplay() {
         btn.textContent = "Remove";
         btn.setAttribute('class', "remove-btn");
         div.appendChild(btn);
+        let READ = document.createElement('button')
+        READ.type = "button";
+        READ.textContent = "Read/Not Read";
+        READ.setAttribute('class', 'read-toggle');
+        div.appendChild(READ);
         wrapper.appendChild(div);
     })
     removeBtn = document.querySelectorAll('.remove-btn');
     removeHandler();
+    toggleBtn = document.querySelectorAll('.read-toggle');
+    toggleHandler();
 }
