@@ -1,20 +1,21 @@
 const myLibrary = [
-    {title: "The Hobbit", author: "J.R.R. Tolkien", pages: "295", read: "Read"},
-    {title: "The BFG", author: "Roald Dahl", pages: "300",read: "Read"},
-    {title: "Illuminatus!", author: "Robert Wilson", pages: "700", read: "Read"}
+    //{title: "The Hobbit", author: "J.R.R. Tolkien", pages: "295", read: "Read"},
+    //{title: "The BFG", author: "Roald Dahl", pages: "300",read: "Read"},
+    //{title: "Illuminatus!", author: "Robert Wilson", pages: "700", read: "Read"}
 ]
 const wrapper = document.querySelector(".wrapper");
 const NEWBOOK = document.querySelector('.new-book');
 const dialog = document.querySelector('.new-dialog');
 const SUBMIT = document.querySelector('.submit');
 const CANCEL = document.querySelector('.cancel');
+const FORM = document.querySelector('#library');
 
-let removeBtn = document.querySelectorAll('.remove-btn');
-let toggleBtn = document.querySelectorAll('.read-toggle');
+//let removeBtn = document.querySelectorAll('.remove-btn');
+//let toggleBtn = document.querySelectorAll('.read-toggle');
 
-libraryDisplay();
-removeHandler();
-toggleHandler();
+//libraryDisplay();
+//removeHandler();
+//toggleHandler();
 
 NEWBOOK.addEventListener('click', () => {
     dialog.showModal();
@@ -41,7 +42,7 @@ function removeButton() {
     this.parentElement.remove();
     myLibrary.splice(this.parentElement.dataset.index, 1);
     removeBtn = document.querySelectorAll('.remove-btn');
-    console.log("clikt");
+    libraryDisplay();
 }
 
 function toggleButton() {
@@ -55,6 +56,7 @@ function submitBook() {
     } else {
         myLibrary.push(book);
         libraryDisplay();
+        FORM.reset();
         dialog.close();
     }
 }
