@@ -56,6 +56,7 @@ function Book(title, author, pages, read) {
        this.read === "Read" 
        ? this.read = "Not Read"
        : this.read = "Read";
+       libraryDisplay();
     }
 }
 
@@ -67,10 +68,15 @@ function libraryDisplay() {
     myLibrary.forEach((book) => {        
         let div = document.createElement('div');
         div.dataset.index = myLibrary.indexOf(book);
+        let i = 0;
         for (const key in book) {
+            if (i === 4) {
+                break;
+            }
             let field = document.createElement('p');
             field.textContent = book[key];
             div.appendChild(field);
+            i++;
         }
         let btn = document.createElement('button');
         btn.type = "button";
