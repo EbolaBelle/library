@@ -16,13 +16,13 @@ CANCEL.addEventListener('click', () => {
 
 SUBMIT.addEventListener('click', submitBook)
 
-function removeHandler(){
-    removeBtn.forEach((button)  => {
+function removeHandler(buttons){
+    buttons.forEach((button)  => {
         button.addEventListener('click', removeButton)
     })}
 
-function toggleHandler() {
-    toggleBtn.forEach((button)  => {
+function toggleHandler(buttons) {
+    buttons.forEach((button)  => {
         button.addEventListener('click', toggleButton)
     })
 }
@@ -71,9 +71,9 @@ function clearDisplay() {
 
 function buttonHandler() {
     let removeBtn = document.querySelectorAll('.remove-btn');
-    removeHandler();
+    removeHandler(removeBtn);
     let toggleBtn = document.querySelectorAll('.read-toggle');
-    toggleHandler();
+    toggleHandler(toggleBtn);
 }
 
 function printData() {
