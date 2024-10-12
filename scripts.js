@@ -22,7 +22,9 @@ function submitBook() {
         alert("Please enter valid data");
     } else {
         myLibrary.push(book);
-        libraryDisplay();
+        //libraryDisplay();
+        drawBookCard(book);
+        buttonHandler();
         FORM.reset();
         dialog.close();
     }
@@ -47,9 +49,8 @@ function clearDisplay() {
       }
 }
 
-function printData() {
-    myLibrary.forEach((book) => {        
-        let div = document.createElement('div');
+function drawBookCard(book) {
+    let div = document.createElement('div');
         div.dataset.index = myLibrary.indexOf(book);
         let i = 0;
         for (const key in book) {
@@ -61,22 +62,21 @@ function printData() {
             div.appendChild(field);
             i++;
         }
-        createButtons(div);
-    })
+    createButtons(div);
 }
 
 function createButtons(parent) {
     let btn = document.createElement('button');
-        btn.type = "button";
-        btn.textContent = "Remove";
-        btn.setAttribute('class', "remove-btn");
-        parent.appendChild(btn);
-        let READ = document.createElement('button')
-        READ.type = "button";
-        READ.textContent = "Read/Not Read";
-        READ.setAttribute('class', 'read-toggle');
-        parent.appendChild(READ);
-        wrapper.appendChild(parent);
+    btn.type = "button";
+    btn.textContent = "Remove";
+    btn.setAttribute('class', "remove-btn");
+    parent.appendChild(btn);
+    let READ = document.createElement('button')
+    READ.type = "button";
+    READ.textContent = "Read/Not Read";
+    READ.setAttribute('class', 'read-toggle');
+    parent.appendChild(READ);
+    wrapper.appendChild(parent);
 }
 
 function removeButton() {
@@ -109,6 +109,6 @@ function buttonHandler() {
 
 function libraryDisplay() {
     clearDisplay();
-    printData();
+    myLibrary.forEach(drawBookCard);
     buttonHandler();
 }
