@@ -16,28 +16,6 @@ CANCEL.addEventListener('click', () => {
 
 SUBMIT.addEventListener('click', submitBook)
 
-function removeHandler(buttons){
-    buttons.forEach((button)  => {
-        button.addEventListener('click', removeButton)
-    })}
-
-function toggleHandler(buttons) {
-    buttons.forEach((button)  => {
-        button.addEventListener('click', toggleButton)
-    })
-}
-
-function removeButton() {
-    this.parentElement.remove();
-    myLibrary.splice(this.parentElement.dataset.index, 1);
-    removeBtn = document.querySelectorAll('.remove-btn');
-    libraryDisplay();
-}
-
-function toggleButton() {
-    myLibrary[this.parentElement.dataset.index].readToggle();
-}
-
 function submitBook() {
     let book = new Book(document.getElementById('title').value, document.getElementById('author').value, document.getElementById('pages').value, document.querySelector('input[name="read"]:checked').value);
     if (book.title === (null || "") || book.author === (null || "") || book.pages === (null || "")) {
@@ -69,15 +47,7 @@ function clearDisplay() {
       }
 }
 
-function buttonHandler() {
-    let removeBtn = document.querySelectorAll('.remove-btn');
-    removeHandler(removeBtn);
-    let toggleBtn = document.querySelectorAll('.read-toggle');
-    toggleHandler(toggleBtn);
-}
-
 function printData() {
-    let index = 0;
     myLibrary.forEach((book) => {        
         let div = document.createElement('div');
         div.dataset.index = myLibrary.indexOf(book);
@@ -107,6 +77,34 @@ function createButtons(parent) {
         READ.setAttribute('class', 'read-toggle');
         parent.appendChild(READ);
         wrapper.appendChild(parent);
+}
+
+function removeButton() {
+    this.parentElement.remove();
+    myLibrary.splice(this.parentElement.dataset.index, 1);
+    libraryDisplay();
+}
+
+function toggleButton() {
+    myLibrary[this.parentElement.dataset.index].readToggle();
+}
+
+function removeHandler(buttons){
+    buttons.forEach((button)  => {
+        button.addEventListener('click', removeButton)
+    })}
+
+function toggleHandler(buttons) {
+    buttons.forEach((button)  => {
+        button.addEventListener('click', toggleButton)
+    })
+}
+
+function buttonHandler() {
+    let removeBtn = document.querySelectorAll('.remove-btn');
+    removeHandler(removeBtn);
+    let toggleBtn = document.querySelectorAll('.read-toggle');
+    toggleHandler(toggleBtn);
 }
 
 function libraryDisplay() {
